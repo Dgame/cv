@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Randy Schütt - Curriculum Vitae</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Curriculum Vitae of Randy Schütt - Engineering Manager with a strong focus on Rust, AWS serverless and search platforms." />
+
+    <style>
+        :root {
+            --bg: #020617;
+            --bg-alt: #020617;
+            --fg: #e5e7eb;
+            --fg-muted: #9ca3af;
+            --accent: #0f766e;
+            --accent-soft: rgba(34, 197, 94, 0.15);
+            --border: #1f2937;
+            --chip-bg: #020617;
+            --chip-border: #1f2937;
+            --chip-active-bg: #16a34a;
+            --chip-active-fg: #ecfdf5;
+            --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.45);
+            --radius-xl: 14px;
+            --radius-2xl: 20px;
+            --transition-fast: 0.18s ease-out;
+            --transition-normal: 0.25s ease-out;
+        }
+
+        [data-theme="light"] {
+            --bg: #f3f4f6;
+            --bg-alt: #ffffff;
+            --fg: #111827;
+            --fg-muted: #6b7280;
+            --accent: #0f766e;
+            --accent-soft: rgba(15, 118, 110, 0.08);
+            --border: #e5e7eb;
+            --chip-bg: #f9fafb;
+            --chip-border: #e5e7eb;
+            --chip-active-bg: #0f766e;
+            --chip-active-fg: #ecfdf5;
+            --shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--fg);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                font-size: 17px;
+            }
+        }
+
+        .page {
+            width: 100%;
+            max-width: 1120px;
+            padding: 32px 18px 48px;
+        }
+
+        @media (min-width: 768px) {
+            .page {
+                padding: 40px 32px 64px;
+            }
+        }
+
+        .glass {
+            background: var(--bg-alt);
+            border-radius: var(--radius-2xl);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* Top bar */
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border);
+            gap: 16px;
+        }
+
+        .logo-mark {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background: transparent;
+        }
+
+        .logo-circle-inner {
+            width: 24px;
+            height: 24px;
+            border-radius: 999px;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        .logo-text-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--fg-muted);
+        }
+
+        .chip {
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 6px 12px;
+            border: 1px solid var(--chip-border);
+            background: var(--chip-bg);
+            font-size: 0.8rem;
+            color: var(--fg-muted);
+        }
+
+        .chip-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: #22c55e;
+        }
+
+        /* Controls */
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-button {
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--fg-muted);
+            padding: 6px 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background var(--transition-fast), border-color var(--transition-fast),
+                color var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .icon-button span.icon {
+            font-size: 1rem;
+        }
+
+        .icon-button:hover {
+            background: rgba(148, 163, 184, 0.08);
+            border-color: rgba(148, 163, 184, 0.9);
+            transform: translateY(-1px);
+        }
+
+        .icon-button.secondary {
+            background: transparent;
+        }
+
+        /* Layout inside main */
+
+        .content {
+            display: grid;
+            grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.7fr);
+            gap: 32px;
+            padding: 24px 20px 26px;
+        }
+
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: minmax(0, 1fr);
+                padding: 20px 16px 24px;
+                gap: 24px;
+            }
+        }
+
+        /* Left column: hero + experience */
+
+        .hero {
+            margin-bottom: 26px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.8);
+            font-size: 0.78rem;
+            color: var(--fg-muted);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+        }
+
+        [data-theme="light"] .hero-badge {
+            background: #f9fafb;
+            border-color: #e5e7eb;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent);
+        }
+
+        .hero h1 {
+            margin: 10px 0 6px;
+            font-size: clamp(2.1rem, 3vw, 2.6rem);
+            letter-spacing: -0.03em;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--fg-muted);
+            margin-bottom: 8px;
+        }
+
+        .hero-profile {
+            font-size: 0.98rem;
+            color: var(--fg-muted);
+            max-width: 620px;
+            margin-bottom: 14px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: var(--fg-muted);
+        }
+
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-meta .dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 999px;
+            background: var(--fg-muted);
+            opacity: 0.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        a.button {
+            text-decoration: none;
+        }
+
+        .pill-button {
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            background: #0b1120;
+            color: var(--fg);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: background var(--transition-fast),
+                transform var(--transition-fast),
+                border-color var(--transition-fast),
+                color var(--transition-fast);
+            box-shadow: none;
+        }
+
+        [data-theme="light"] .pill-button {
+            background: #111827;
+            color: #f9fafb;
+            border-color: #111827;
+        }
+
+        .pill-button.primary {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .pill-button.primary span.icon {
+            font-size: 1rem;
+        }
+
+        .pill-button:hover {
+            transform: translateY(-1px);
+            background: #020617;
+            border-color: rgba(148, 163, 184, 0.9);
+        }
+
+        .pill-button.primary:hover {
+            background: #16a34a;
+            border-color: #16a34a;
+        }
+
+        /* Section headings */
+
+        .section-heading {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            margin-top: 10px;
+        }
+
+        .section-heading h2 {
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            font-weight: 600;
+            color: var(--fg-muted);
+            margin: 0;
+        }
+
+        .section-heading small {
+            font-size: 0.78rem;
+            color: var(--fg-muted);
+        }
+
+        /* Experience filters */
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .filter-chip {
+            border-radius: 999px;
+            border: 1px solid var(--chip-border);
+            padding: 5px 11px;
+            font-size: 0.8rem;
+            background: var(--chip-bg);
+            color: var(--fg-muted);
+            cursor: pointer;
+            transition: background var(--transition-fast),
+                color var(--transition-fast),
+                border-color var(--transition-fast),
+                transform var(--transition-fast);
+        }
+
+        .filter-chip[data-active="true"] {
+            background: var(--chip-active-bg);
+            color: var(--chip-active-fg);
+            border-color: transparent;
+            transform: translateY(-1px);
+        }
+
+        .filter-chip:hover {
+            border-color: var(--accent);
+        }
+
+        /* Experience list */
+
+        .timeline {
+            position: relative;
+            padding-left: 12px;
+            margin: 0;
+            list-style: none;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            bottom: 4px;
+            width: 1px;
+            background: rgba(148, 163, 184, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 18px;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity var(--transition-normal), transform var(--transition-normal);
+        }
+
+        .timeline-item[data-hidden="true"] {
+            opacity: 0.3;
+            transform: translateY(2px);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -1px;
+            top: 7px;
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: var(--accent);
+        }
+
+        .timeline-card {
+            border-radius: var(--radius-xl);
+            background: #020617;
+            border: 1px solid var(--border);
+            padding: 10px 12px 10px;
+            transition: border-color var(--transition-fast),
+                background var(--transition-fast),
+                transform var(--transition-fast);
+        }
+
+        [data-theme="light"] .timeline-card {
+            background: #ffffff;
+            border-color: #e5e7eb;
+        }
+
+        .timeline-card:hover {
+            border-color: rgba(148, 163, 184, 0.9);
+            transform: translateY(-1px);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .timeline-meta {
+            font-size: 0.82rem;
+            color: var(--fg-muted);
+        }
+
+        .timeline-period {
+            font-size: 0.8rem;
+            color: var(--fg-muted);
+            white-space: nowrap;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 6px 0 4px;
+        }
+
+        .tag {
+            border-radius: 999px;
+            padding: 2px 8px;
+            font-size: 0.74rem;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: var(--fg-muted);
+            background: transparent;
+        }
+
+        [data-theme="light"] .tag {
+            background: #f9fafb;
+            border-color: #e5e7eb;
+            color: #4b5563;
+        }
+
+        .job-details {
+            font-size: 0.9rem;
+            color: var(--fg-muted);
+            margin: 6px 0 0;
+            padding-left: 18px;
+            display: none;
+        }
+
+        .job-details li {
+            margin-bottom: 4px;
+        }
+
+        .toggle-details {
+            margin-top: 4px;
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: 0.82rem;
+            color: var(--accent);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .toggle-details:hover {
+            text-decoration: underline;
+        }
+
+        /* Right column: cards */
+
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .card {
+            border-radius: var(--radius-xl);
+            background: #020617;
+            border: 1px solid var(--border);
+            padding: 14px 14px 16px;
+        }
+
+        [data-theme="light"] .card {
+            background: #ffffff;
+            border-color: #e5e7eb;
+        }
+
+        .card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--fg-muted);
+            margin: 0 0 8px;
+        }
+
+        .card-subtitle {
+            font-size: 0.82rem;
+            color: var(--fg-muted);
+            margin-bottom: 8px;
+        }
+
+        .skill-group {
+            margin-bottom: 10px;
+        }
+
+        .skill-group-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .skill-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-chip {
+            border-radius: 999px;
+            padding: 3px 9px;
+            font-size: 0.78rem;
+            border: 1px solid var(--chip-border);
+            background: var(--chip-bg);
+            color: var(--fg-muted);
+            white-space: nowrap;
+        }
+
+        .skill-chip.badge {
+            border-style: dashed;
+            font-size: 0.76rem;
+        }
+
+        .skill-chip--primary {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+            color: var(--fg);
+        }
+
+        .skill-chip--legacy {
+            opacity: 0.75;
+        }
+
+        .education-item {
+            font-size: 0.86rem;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed rgba(148, 163, 184, 0.3);
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .education-title {
+            font-weight: 600;
+        }
+
+        .education-meta {
+            font-size: 0.8rem;
+            color: var(--fg-muted);
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.86rem;
+        }
+
+        .contact-list li {
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .contact-label {
+            color: var(--fg-muted);
+        }
+
+        .contact-value a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+
+        .interests-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.86rem;
+            color: var(--fg-muted);
+        }
+
+        .interests-list li {
+            margin-bottom: 4px;
+        }
+
+        /* Print styles */
+
+        @media print {
+            body {
+                background: #ffffff;
+            }
+
+            .glass {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            #themeToggle {
+                display: none !important;
+            }
+
+            .page {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+    <main class="page">
+        <section class="glass">
+            <!-- Top bar -->
+            <div class="top-bar">
+                <div class="logo-mark">
+                    <div class="logo-circle">
+                        <div class="logo-circle-inner">RS</div>
+                    </div>
+                    <div>
+                        <div class="logo-text-title">Curriculum Vitae</div>
+                        <div style="font-size: 0.75rem; color: var(--fg-muted);">
+                            Engineering Manager · Rust &amp; Cloud
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="themeToggle" class="icon-button secondary" type="button" aria-label="Toggle theme">
+                        <span class="icon">🌙</span>
+                        <span class="label">Dark</span>
+                    </button>
+
+                    <div class="chip">
+                        <span class="chip-dot"></span>
+                        <span>Open to senior Rust / AWS roles</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="content">
+                <!-- Left column -->
+                <div>
+                    <header class="hero" id="top">
+                        <div class="hero-badge">
+                            <span class="hero-badge-dot"></span>
+                            <span>Engineering Manager · 7+ years with Rust · 8+ years with AWS</span>
+                        </div>
+                        <h1>Randy Sch&uuml;tt</h1>
+
+                        <div class="hero-subtitle">
+                            I technically lead and build Statista's public API in Rust on AWS.
+                        </div>
+                        <p class="hero-profile">
+                            Engineering Manager on the technical track in the API &amp; Ecosystem cluster at Statista.
+                            I focus on Rust-based serverless backends on AWS, high-availability public APIs and
+                            pragmatic, hands-on technical leadership around search and data platforms.
+                        </p>
+                        <div class="hero-meta">
+                            <span>📍 Hamburg, Germany</span>
+                            <span class="dot"></span>
+                            <span>🇩🇪 Native · 🇬🇧 Fluent</span>
+                        </div>
+                        <div class="hero-actions">
+                            <a class="button" href="mailto:r.schuett@protonmail.com">
+                                <button type="button" class="pill-button primary">
+                                    <span class="icon">✉️</span>
+                                    <span>Contact via Email</span>
+                                </button>
+                            </a>
+                            <!-- <a class="button" href="cv_randy_schuett.pdf" download>
+                                <button type="button" class="pill-button">
+                                    <span class="icon">📄</span>
+                                    <span>Download PDF</span>
+                                </button>
+                            </a> -->
+                            <button type="button" class="pill-button" id="scrollToExperience">
+                                <span class="icon">⬇️</span>
+                                <span>View experience</span>
+                            </button>
+                        </div>
+                    </header>
+
+                    <!-- Experience -->
+                    <section id="experience">
+                        <div class="section-heading">
+                            <h2>Experience</h2>
+                        </div>
+
+                        <div class="filters">
+                            <button class="filter-chip" data-filter="all" data-active="true">All</button>
+                            <button class="filter-chip" data-filter="rust">Rust</button>
+                            <button class="filter-chip" data-filter="cloud">Cloud &amp; AWS</button>
+                            <button class="filter-chip" data-filter="leadership">Leadership</button>
+                            <button class="filter-chip" data-filter="php">PHP</button>
+                        </div>
+
+                        <ol class="timeline">
+                            <!-- Statista - Engineering Manager API & Ecosystem -->
+                            <li class="timeline-item" data-tags="leadership cloud rust api">
+                                <div class="timeline-dot"></div>
+                                <article class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Engineering Manager - API &amp; Ecosystem
+                                                Cluster</div>
+                                            <div class="timeline-meta">Statista GmbH · Hamburg</div>
+                                        </div>
+                                        <div class="timeline-period">Dec 2024 - Present</div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tag">Rust</span>
+                                        <span class="tag">AWS</span>
+                                        <span class="tag">Lambda</span>
+                                        <span class="tag">API Gateway</span>
+                                        <span class="tag">Public API</span>
+                                    </div>
+                                    <ul class="job-details">
+                                        <li>Own the public Statista API within the API &amp; Ecosystem Cluster,
+                                            supporting Statista's evolution into a leading data provider.</li>
+                                        <li>Design and implement Rust-based services on AWS (Lambda on ARM64, API
+                                            Gateway and supporting services) to provide reliable, low-latency access to
+                                            Statista's data.</li>
+                                        <li>Focus on availability, performance and resilience, targeting 99.9%+ uptime
+                                            for the public API.</li>
+                                        <li>Ensure robustness and security of the platform - in recent penetration tests
+                                            no exploitable attack vectors were identified.</li>
+                                        <li>Collaborate with product, data and platform teams as well as external
+                                            partners to evolve the API strategy and developer experience.</li>
+                                    </ul>
+                                    <button class="toggle-details" type="button">
+                                        <span>Show details</span> <span>▾</span>
+                                    </button>
+                                </article>
+                            </li>
+
+                            <!-- Statista - Interim Engineering Manager Search -->
+                            <li class="timeline-item" data-tags="leadership cloud rust">
+                                <div class="timeline-dot"></div>
+                                <article class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Interim Engineering Manager - Search Team</div>
+                                            <div class="timeline-meta">Statista GmbH · Hamburg</div>
+                                        </div>
+                                        <div class="timeline-period">Mar 2024 - Oct 2024</div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tag">Leadership</span>
+                                        <span class="tag">Search</span>
+                                        <span class="tag">AWS</span>
+                                    </div>
+                                    <ul class="job-details">
+                                        <li>Took over interim engineering management for the Search team after the
+                                            previous manager left.</li>
+                                        <li>Combined technical leadership with people management to maintain delivery,
+                                            stability and team health during a transition phase.</li>
+                                        <li>Steered the evolution of the AWS-based search platform and prepared the
+                                            organisational split into separate Search and API teams.</li>
+                                        <li>Worked closely with product and stakeholders to keep search aligned with
+                                            Statista's data provider strategy.</li>
+                                    </ul>
+                                    <button class="toggle-details" type="button">
+                                        <span>Show details</span> <span>▾</span>
+                                    </button>
+                                </article>
+                            </li>
+
+                            <!-- Statista - Tech Lead Search -->
+                            <li class="timeline-item" data-tags="cloud rust">
+                                <div class="timeline-dot"></div>
+                                <article class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Tech-Lead - Search Team</div>
+                                            <div class="timeline-meta">Statista GmbH · Hamburg</div>
+                                        </div>
+                                        <div class="timeline-period">Apr 2023 - Feb 2024</div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tag">Rust</span>
+                                        <span class="tag">Search</span>
+                                        <span class="tag">OpenSearch</span>
+                                        <span class="tag">AWS</span>
+                                    </div>
+                                    <ul class="job-details">
+                                        <li>Acted as technical lead for the Search team with end-to-end responsibility
+                                            for the architecture and implementation of Statista's search platform.</li>
+                                        <li>Drove the evolution of the AWS search stack (OpenSearch/Elasticsearch,
+                                            event-driven pipelines with SQS, Lambda, Kinesis, Firehose, etc.).</li>
+                                        <li>Partnered with product to define the search roadmap, improve relevance and
+                                            optimise performance and robustness.</li>
+                                    </ul>
+                                    <button class="toggle-details" type="button">
+                                        <span>Show details</span> <span>▾</span>
+                                    </button>
+                                </article>
+                            </li>
+
+                            <!-- Statista - Tech & Team Lead Search -->
+                            <li class="timeline-item" data-tags="leadership cloud rust">
+                                <div class="timeline-dot"></div>
+                                <article class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Team- &amp; Tech-Lead - Search Team</div>
+                                            <div class="timeline-meta">Statista GmbH · Hamburg</div>
+                                        </div>
+                                        <div class="timeline-period">Jul 2021 - Mar 2023</div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tag">Leadership</span>
+                                        <span class="tag">Rust</span>
+                                        <span class="tag">OpenSearch</span>
+                                        <span class="tag">AWS</span>
+                                    </div>
+                                    <ul class="job-details">
+                                        <li>Built and led the Search team, combining hands-on development with team
+                                            leadership responsibilities.</li>
+                                        <li>Introduced Rust into the organisation and guided its adoption for new
+                                            backend services.</li>
+                                        <li>Designed and implemented the initial version of the global search platform
+                                            on AWS using Elasticsearch/OpenSearch.</li>
+                                        <li>Rolled out modern development practices and Docker-based local development
+                                            workflows for the team.</li>
+                                    </ul>
+                                    <button class="toggle-details" type="button">
+                                        <span>Show details</span> <span>▾</span>
+                                    </button>
+                                </article>
+                            </li>
+
+                            <!-- Statista - Senior Software Developer -->
+                            <li class="timeline-item" data-tags="cloud">
+                                <div class="timeline-dot"></div>
+                                <article class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Senior Software Developer - Search Team</div>
+                                            <div class="timeline-meta">Statista GmbH · Hamburg</div>
+                                        </div>
+                                        <div class="timeline-period">Jan 2021 - Jun 2021</div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tag">Search</span>
+                                        <span class="tag">Manticore</span>
+                                        <span class="tag">Elasticsearch</span>
+                                        <span class="tag">Agile</span>
+                                    </div>
+                                    <ul class="job-details">
+                                        <li>Introduced Docker-based workflows for local development.</li>
+                                        <li>Helped build the team and rolled out agile practices (Scrum, backlog
+                                            refinements, retrospectives).</li>
+                                        <li>Worked on the global search implementation using Manticore and
+                                            Elasticsearch.</li>
+                                    </ul>
+                                    <button class="toggle-details" type="button">
+                                        <span>Show details</span> <span>▾</span>
+                                    </button>
+                                </article>
+                            </li>
+
+                            <!-- DEMV - Team & Tech-Lead -->
+                            <li class="timeline-item" data-tags="leadership cloud php">
+                                <div class="timeline-dot"></div>
+                                <article class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Team &amp; Tech-Lead - Team Rocket</div>
+                                            <div class="timeline-meta">DEMV Deutscher Maklerverbund GmbH · Hamburg</div>
+                                        </div>
+                                        <div class="timeline-period">Jul 2019 - Dec 2020</div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tag">Leadership</span>
+                                        <span class="tag">Docker</span>
+                                        <span class="tag">Ansible</span>
+                                    </div>
+                                    <ul class="job-details">
+                                        <li>Introduced Docker for local development across the team.</li>
+                                        <li>Introduced and developed infrastructure automation with Ansible.</li>
+                                    </ul>
+                                    <button class="toggle-details" type="button">
+                                        <span>Show details</span> <span>▾</span>
+                                    </button>
+                                </article>
+                            </li>
+
+                            <!-- DEMV - Senior Software Developer -->
+                            <li class="timeline-item" data-tags="rust cloud">
+                                <div class="timeline-dot"></div>
+                                <article class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Senior Software Developer - Team Rocket</div>
+                                            <div class="timeline-meta">DEMV Deutscher Maklerverbund GmbH · Hamburg</div>
+                                        </div>
+                                        <div class="timeline-period">Apr 2018 - Jun 2019</div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tag">Rust</span>
+                                        <span class="tag">Machine Learning</span>
+                                        <span class="tag">AWS Lambda</span>
+                                    </div>
+                                    <ul class="job-details">
+                                        <li>Built a Rust-based tool to predict and classify divisions, document types
+                                            and insurance companies based on file names.</li>
+                                        <li>Implemented AWS Lambda functions in Rust to interpret and convert GDV and
+                                            BiPRO data.</li>
+                                    </ul>
+                                    <button class="toggle-details" type="button">
+                                        <span>Show details</span> <span>▾</span>
+                                    </button>
+                                </article>
+                            </li>
+
+                            <!-- DEMV - Freelancer / Software Developer -->
+                            <li class="timeline-item" data-tags="php">
+                                <div class="timeline-dot"></div>
+                                <article class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Freelancer / Software Developer</div>
+                                            <div class="timeline-meta">DEMV Deutscher Maklerverbund GmbH · Hamburg</div>
+                                        </div>
+                                        <div class="timeline-period">Apr 2015 - Apr 2018</div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tag">PHP</span>
+                                        <span class="tag">CRM</span>
+                                    </div>
+                                    <ul class="job-details">
+                                        <li>Imported and interpreted BiPRO data in PHP.</li>
+                                        <li>Migrated the CRM system from PHP 5.5 to 7.x.</li>
+                                        <li>Developed CRM functionality for brokers in PHP.</li>
+                                    </ul>
+                                    <button class="toggle-details" type="button">
+                                        <span>Show details</span> <span>▾</span>
+                                    </button>
+                                </article>
+                            </li>
+
+                            <!-- Upload@24 - Student Employee -->
+                            <li class="timeline-item" data-tags="student">
+                                <div class="timeline-dot"></div>
+                                <article class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Student Employee / Software Developer</div>
+                                            <div class="timeline-meta">Upload@24 IT Consulting GmbH · Hamburg</div>
+                                        </div>
+                                        <div class="timeline-period">Mar 2014 - Mar 2015</div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tag">Software Development</span>
+                                        <span class="tag">Student role</span>
+                                    </div>
+                                    <ul class="job-details">
+                                        <li>Student employee in software development.</li>
+                                    </ul>
+                                    <button class="toggle-details" type="button">
+                                        <span>Show details</span> <span>▾</span>
+                                    </button>
+                                </article>
+                            </li>
+
+                            <!-- iteratec - Industrial internship -->
+                            <li class="timeline-item" data-tags="internship">
+                                <div class="timeline-dot"></div>
+                                <article class="timeline-card">
+                                    <div class="timeline-header">
+                                        <div>
+                                            <div class="timeline-title">Industrial Internship</div>
+                                            <div class="timeline-meta">iteratec · Hamburg</div>
+                                        </div>
+                                        <div class="timeline-period">Oct 2012 - Jan 2013</div>
+                                    </div>
+                                    <div class="tag-row">
+                                        <span class="tag">Internship</span>
+                                        <span class="tag">Software Engineering</span>
+                                    </div>
+                                    <ul class="job-details">
+                                        <li>Industrial internship in software development.</li>
+                                    </ul>
+                                    <button class="toggle-details" type="button">
+                                        <span>Show details</span> <span>▾</span>
+                                    </button>
+                                </article>
+                            </li>
+                        </ol>
+
+                    </section>
+                </div>
+
+                <!-- Right column -->
+                <aside class="right-column">
+                    <!-- Profile & focus -->
+                    <section id="profile" class="card">
+                        <h3>Profile &amp; focus</h3>
+
+                        <div class="skill-group">
+                            <div class="skill-group-title">Key strengths</div>
+                            <ul class="interests-list">
+                                <li>Engineering Manager on the technical track for Statista's public API in the API
+                                    &amp; Ecosystem cluster.</li>
+                                <li>7+ years building backend and serverless systems in Rust on AWS.</li>
+                                <li>Strong technical leadership introducing new technologies (Rust, Docker, IaC) and
+                                    improving developer workflows.</li>
+                                <li>Deep knowledge of Rust & AWS Serverless.</li>
+                                <li>Strong background in PHP and legacy migrations in general.</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-title">What I'm looking for</div>
+                            <ul class="interests-list">
+                                <li>Engineering Manager / Tech Lead (technical track) roles with hands-on Rust backend
+                                    work.</li>
+                                <li>Serverless and event-driven architectures on AWS.</li>
+                                <li>Search, data platforms and APIs at scale.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Skills -->
+                    <section id="skills" class="card">
+                        <h3>Skills</h3>
+
+                        <div class="skill-group">
+                            <div class="skill-group-title">Programming languages</div>
+                            <div class="skill-chips">
+                                <span class="skill-chip skill-chip--primary">Rust (10 yrs, 7 yrs professional)</span>
+                                <span class="skill-chip skill-chip--primary">PHP (20 yrs, 11 yrs professional)</span>
+                                <span class="skill-chip">C/C++ (12 yrs)</span>
+                                <span class="skill-chip">D (8 yrs)</span>
+                                <span class="skill-chip">Python (4 yrs)</span>
+                                <span class="skill-chip">Java (4 yrs)</span>
+                                <span class="skill-chip">C# (2 yrs)</span>
+                                <span class="skill-chip">Go (1 yr)</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-title">Cloud &amp; automation</div>
+                            <div class="skill-chips">
+                                <span class="skill-chip skill-chip--primary">AWS</span>
+                                <span class="skill-chip skill-chip--primary">AWS Lambda</span>
+                                <span class="skill-chip skill-chip--primary">AWS API Gateway</span>
+                                <span class="skill-chip">AWS SQS / Kinesis / Firehose</span>
+                                <span class="skill-chip skill-chip--primary">AWS CDK</span>
+                                <span class="skill-chip">Terraform</span>
+                                <span class="skill-chip">Ansible</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-title">Data &amp; search</div>
+                            <div class="skill-chips">
+                                <span class="skill-chip">OpenSearch / Elasticsearch</span>
+                                <span class="skill-chip skill-chip--primary">DynamoDB</span>
+                                <span class="skill-chip">Manticore</span>
+                                <span class="skill-chip">MySQL</span>
+                                <span class="skill-chip">MongoDB</span>
+                                <span class="skill-chip">Redis</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-title">DevOps &amp; CI/CD</div>
+                            <div class="skill-chips">
+                                <span class="skill-chip skill-chip--primary">Docker</span>
+                                <span class="skill-chip skill-chip--primary">Git</span>
+                                <span class="skill-chip skill-chip--primary">GitHub Actions</span>
+                                <span class="skill-chip">Scrutinizer CI</span>
+                                <span class="skill-chip">Travis CI</span>
+                                <span class="skill-chip">Style CI</span>
+                                <span class="skill-chip">Circle CI</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-title">Operating systems</div>
+                            <div class="skill-chips">
+                                <span class="skill-chip">MacOS</span>
+                                <span class="skill-chip">Linux (Ubuntu, openSUSE, Arch)</span>
+                                <span class="skill-chip">Windows</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-group">
+                            <div class="skill-group-title">Languages</div>
+                            <div class="skill-chips">
+                                <span class="skill-chip">German (native)</span>
+                                <span class="skill-chip">English (fluent)</span>
+                                <span class="skill-chip">Spanish (basic)</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Projects -->
+                    <section id="projects" class="card">
+                        <h3>Selected projects</h3>
+                        <ul class="interests-list">
+                            <li>
+                                <strong>Serverless document processing pipeline:</strong>
+                                Rust-based Lambdas on AWS (ARM64) to interpret and convert GDV and
+                                BiPRO data using AWS S3, AWS SQS and AWS API Gateway.
+                            </li>
+                            <li>
+                                <strong>Search platform migration:</strong>
+                                Migration from Manticore to OpenSearch, including indexing
+                                pipelines and relevance tuning for global search.
+                            </li>
+                            <li>
+                                <strong>Global API for data products:</strong>
+                                External-facing API on AWS (Lambda, API Gateway, SQS) to deliver
+                                data products to customers worldwide.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Education -->
+                    <section id="education" class="card">
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <div class="education-title">Master of Science - Computer Science</div>
+                            <div class="education-meta">University of Hamburg · Mar 2014 - Apr 2018</div>
+                        </div>
+                        <div class="education-item">
+                            <div class="education-title">Bachelor of Science - Software-System-Development</div>
+                            <div class="education-meta">University of Hamburg · Oct 2010 - Jul 2014</div>
+                        </div>
+                        <div class="education-item">
+                            <div class="education-title">Abitur - Business high school</div>
+                            <div class="education-meta">Vocational school Mölln · 2007 - 2010</div>
+                        </div>
+                    </section>
+
+                    <!-- Contact -->
+                    <section id="contact" class="card">
+                        <h3>Contact</h3>
+                        <ul class="contact-list">
+                            <li>
+                                <span class="contact-label">Location</span>
+                                <span class="contact-value">Borsteler Chaussee 80, 22453 Hamburg</span>
+                            </li>
+                            <li>
+                                <span class="contact-label">Phone</span>
+                                <span class="contact-value">
+                                    <a href="tel:+491712800766">+49 171 / 2800 766</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">
+                                    <a href="mailto:r.schuett@protonmail.com">r.schuett@protonmail.com</a>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">
+                                    <a href="https://github.com/YOUR-GITHUB-HANDLE">github.com/YOUR-GITHUB-HANDLE</a>
+                                </span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Interests -->
+                    <section id="interests" class="card">
+                        <h3>Interests</h3>
+                        <ul class="interests-list">
+                            <li><strong>Programming:</strong> game development, compilers</li>
+                            <li><strong>Wellness:</strong> swimming, sauna</li>
+                            <li><strong>Whisky:</strong> tastings, exhibitions and distillery visits</li>
+                            <li><strong>Sports:</strong> playing golf</li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Theme toggle with localStorage
+        (function () {
+            const body = document.body;
+            const btn = document.getElementById("themeToggle");
+            const stored = window.localStorage.getItem("theme");
+
+            if (stored === "light" || stored === "dark") {
+                body.setAttribute("data-theme", stored);
+            }
+
+            function updateButton() {
+                const current = body.getAttribute("data-theme") || "dark";
+                const icon = btn.querySelector(".icon");
+                const label = btn.querySelector(".label");
+
+                // Show the *target* mode, not the current one
+                if (current === "dark") {
+                    icon.textContent = "☀️";
+                    label.textContent = "Light";
+                } else {
+                    icon.textContent = "🌙";
+                    label.textContent = "Dark";
+                }
+            }
+
+            btn.addEventListener("click", () => {
+                const current = body.getAttribute("data-theme") || "dark";
+                const next = current === "dark" ? "light" : "dark";
+                body.setAttribute("data-theme", next);
+                window.localStorage.setItem("theme", next);
+                updateButton();
+            });
+
+            updateButton();
+        })();
+
+        // Smooth scroll buttons
+        document.querySelectorAll(".nav-link").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const target = btn.getAttribute("data-target");
+                if (!target) return;
+                const el = document.querySelector(target);
+                if (el) {
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        });
+
+        document.getElementById("scrollToExperience").addEventListener("click", () => {
+            const el = document.getElementById("experience");
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        });
+
+        // Experience filter
+        (function () {
+            const chips = Array.from(document.querySelectorAll(".filter-chip"));
+            const items = Array.from(document.querySelectorAll(".timeline-item"));
+
+            function applyFilter(filter) {
+                items.forEach((item) => {
+                    const tags = (item.getAttribute("data-tags") || "").split(/\s+/);
+                    const match = filter === "all" || tags.includes(filter);
+                    item.dataset.hidden = match ? "false" : "true";
+                });
+            }
+
+            chips.forEach((chip) => {
+                chip.addEventListener("click", () => {
+                    const filter = chip.getAttribute("data-filter");
+                    chips.forEach((c) => c.setAttribute("data-active", "false"));
+                    chip.setAttribute("data-active", "true");
+                    applyFilter(filter);
+                });
+            });
+
+            applyFilter("all");
+        })();
+
+        // Toggle job details
+        (function () {
+            document.querySelectorAll(".timeline-card").forEach((card) => {
+                const btn = card.querySelector(".toggle-details");
+                const list = card.querySelector(".job-details");
+
+                if (!btn || !list) return;
+
+                btn.addEventListener("click", () => {
+                    const isOpen = list.style.display === "block";
+                    list.style.display = isOpen ? "none" : "block";
+                    btn.querySelector("span").textContent = isOpen ? "Show details" : "Hide details";
+                    btn.querySelectorAll("span")[1].textContent = isOpen ? "▾" : "▴";
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
